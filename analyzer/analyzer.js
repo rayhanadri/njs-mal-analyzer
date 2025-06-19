@@ -222,9 +222,9 @@ async function getUserStatistics(username) {
     // console.log("Response status:", response);
 
     const userStats = new UserAnimeStatistics(
-      response.data.data.days_watched,
-      response.data.data.mean_score,
-      response.data.data.total_entries
+      response.data.data.anime.days_watched,
+      response.data.data.anime.mean_score,
+      response.data.data.anime.total_entries
     );
 
     // console.log(response.data.data); // JSON data
@@ -250,8 +250,8 @@ async function getAnalyzerResult(username, startYear, endYear) {
     userStats,
     startYear,
     endYear,
-    topAnimeByYear,
-    top5MostWatchedGenresAllTime
+    top5MostWatchedGenresAllTime,
+    topAnimeByYear
   );
 }
 
