@@ -1,11 +1,22 @@
 // index.js
 const express = require("express");
+const cors = require('cors');
 const app = express();
 const port = 8080;
 
 // Middleware to parse JSON
 app.use(express.json());
-// let username = "Eru_Ikusu";
+
+
+// allow CORS
+app.use(cors());
+
+// atau untuk kontrol yang lebih ketat:
+app.use(cors({
+  origin: '*', // ganti dengan 'http://localhost:3000' jika hanya untuk lokal
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
+}));
 
 // add analyzer
 var analyzer = require("./analyzer/analyzer.js");
