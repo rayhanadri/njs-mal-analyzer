@@ -196,7 +196,13 @@ class TopAnimeOfYear {
 async function getUserProfile(username) {
   const link = "https://api.jikan.moe/v4/users/" + username;
   try {
-    const response = await axios.get(link);
+    const response = await axios.get(link, {
+      headers: {
+        Accept: "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        Connection: "keep-alive",
+      },
+    });
     // console.log(link);
     // console.log("Response status:", response);
 
@@ -210,6 +216,7 @@ async function getUserProfile(username) {
     // console.log(response.data.data); // JSON data
     return userData;
   } catch (error) {
+    console.log("Error get profile: " + link);
     console.error("Error fetching data:", error.message);
   }
 }
@@ -217,7 +224,13 @@ async function getUserProfile(username) {
 async function getUserStatistics(username) {
   const link = "https://api.jikan.moe/v4/users/" + username + "/statistics";
   try {
-    const response = await axios.get(link);
+    const response = await axios.get(link, {
+      headers: {
+        Accept: "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        Connection: "keep-alive",
+      },
+    });
     // console.log(link);
     // console.log("Response status:", response);
 
