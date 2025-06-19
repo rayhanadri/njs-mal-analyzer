@@ -17,8 +17,11 @@ app.post("/analyzer", (req, res) => {
     return res.status(400).json({ error: "Username is required" });
   }
 
+  let currentYear = new Date().getFullYear();
+  let startYear = currentYear - 10; // Default to last 5 years
+
   analyzer
-    .getAnalyzerResult(username, 2020, 2025)
+    .getAnalyzerResult(username, startYear, currentYear)
     .then((analyzerResult) => {
       res.json(analyzerResult);
     })
